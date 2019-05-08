@@ -1,7 +1,7 @@
 
 
 buildscript {
-    
+
     ext {
         springBootVersion = "2.1.4.RELEASE"
     }
@@ -28,6 +28,8 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+    testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
+    testCompile "org.assertj:assertj-core:1.0.0"
 }
 
 bootRun.environment([
