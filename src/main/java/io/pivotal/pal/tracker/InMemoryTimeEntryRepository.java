@@ -40,7 +40,7 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository{
         TimeEntry updatedTimeEntry = new TimeEntry(id,
                 timeEntry.getProjectId(),timeEntry.getUserId(),timeEntry.getDate(),timeEntry.getHours());
 
-        timeEntries.remove(id,updatedTimeEntry);
+        timeEntries.put(id,updatedTimeEntry);
         return updatedTimeEntry;
     }
 
