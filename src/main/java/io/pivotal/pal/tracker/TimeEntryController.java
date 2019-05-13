@@ -18,16 +18,16 @@ public class TimeEntryController {
     }
 
     @PostMapping
-    public ResponseEntity create(@RequestBody TimeEntry timeEntryToCreate) {
+    public ResponseEntity create(@RequestBody TimeEntry timeEntry) {
 
-        TimeEntry timeEntry = timeEntryRepository.create(timeEntryToCreate);
-        return new ResponseEntity(timeEntry, HttpStatus.OK);
+        TimeEntry createdTimeEntry = timeEntryRepository.create(timeEntry);
+        return new ResponseEntity(createdTimeEntry, HttpStatus.CREATED);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<TimeEntry> read(@PathVariable long timeEntryId) {
+    public ResponseEntity<TimeEntry> read(@PathVariable long id) {
 
-        TimeEntry timeEntry = timeEntryRepository.find(timeEntryId);
+        TimeEntry timeEntry = timeEntryRepository.find(id);
         if(null == timeEntry){
             return new ResponseEntity<>(timeEntry,HttpStatus.NOT_FOUND);
         }else{
@@ -42,10 +42,10 @@ public class TimeEntryController {
         return new ResponseEntity<>(timeEntryRepository.list(),HttpStatus.OK);
     }
 
-    @PutMapping({"id"})
-    public ResponseEntity update(@PathVariable long timeEntryId, @RequestBody TimeEntry expected) {
+    @PutMapping("{id}")
+    public ResponseEntity update(@PathVariable Long id, @RequestBody TimeEntry expected) {
 
-        TimeEntry updatedTimeEntry = timeEntryRepository.update(timeEntryId, expected);
+        TimeEntry updatedTimeEntry = timeEntryRepository.update(id, expected);
         if (updatedTimeEntry != null) {
             return new ResponseEntity<>(updatedTimeEntry, HttpStatus.OK);
         } else {
@@ -54,8 +54,8 @@ public class TimeEntryController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<TimeEntry> delete(long timeEntryId) {
-        timeEntryRepository.delete(timeEntryId);
+    public ResponseEntity<TimeEntry> delete(Long id) {
+        timeEntryRepository.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

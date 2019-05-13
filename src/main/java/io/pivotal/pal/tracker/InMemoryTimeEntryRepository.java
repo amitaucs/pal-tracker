@@ -18,7 +18,7 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository{
         TimeEntry newtimeEntry = new TimeEntry(id,timeEntry.getProjectId(),timeEntry.getUserId(),
                 timeEntry.getDate(),timeEntry.getHours());
 
-        timeEntries.put(id,timeEntry);
+        timeEntries.put(id,newtimeEntry);
 
         return newtimeEntry;
     }

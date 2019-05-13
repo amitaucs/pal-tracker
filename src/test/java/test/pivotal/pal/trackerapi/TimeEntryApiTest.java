@@ -30,7 +30,7 @@ public class TimeEntryApiTest {
 
     private final long projectId = 123L;
     private final long userId = 456L;
-    private TimeEntry timeEntry = new TimeEntry(projectId, userId, userId, LocalDate.parse("2017-01-08"), 8);
+    private TimeEntry timeEntry = new TimeEntry(projectId, userId,  LocalDate.parse("2017-01-08"), 8);
 
     @Test
     public void testCreate() throws Exception {
